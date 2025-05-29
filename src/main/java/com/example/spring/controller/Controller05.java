@@ -142,4 +142,14 @@ public class Controller05 {
         return "main5/sub12";
     }
 
+    @RequestMapping("sub13")
+    public String sub13(Model model) {
+
+        model.addAttribute("aiList",
+                List.of(new MyBean0513("gemini", "2020-01-01", 3000),
+                        new MyBean0513("chatGPT", "1919-12-12", 2500),
+                        new MyBean0513("copilot", "1988-11-11", 6500)));
+        return "main5/sub13";
+    }
+
 }
