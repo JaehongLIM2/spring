@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1 th:text="${riri}">Lorem1.</h1>
+<h1 th:text="${riri.name}">Lorem.</h1>
+<h1 th:text="${riri.age}">Voluptatibus.</h1>
+<h1 th:text="${riri.address}">Quia.</h1>
+<!--<h1 th:text="${riri.my info}">Lorem.</h1>-->
+<hr>
+<h1 th:text="${riri['name']}">Lorem.</h1>
+<h1 th:text="${riri['age']}">Harum.</h1>
+<h1 th:text="${riri['address']}">Distinctio!</h1>
+<h1 th:text="${riri['my info']}">Lorem.</h1>
+</body>
+</html>

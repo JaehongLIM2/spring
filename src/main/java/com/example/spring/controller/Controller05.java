@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.Map;
+
 @Controller
 @RequestMapping("main5")
 public class Controller05 {
@@ -51,5 +53,42 @@ public class Controller05 {
         model.addAttribute("val", obj);
 
         return "main5/sub3";
+    }
+
+    // model attribute type 이 Map
+    @RequestMapping("sub4")
+    public String sub4(Model model) {
+        model.addAttribute("riri",
+                Map.of("name", "tiger",
+                        "age", 20,
+                        "address", "seoul",
+                        "my info", "my name is HongJae"
+                ));
+
+        return "main5/sub4";
+    }
+
+    @RequestMapping("sub5")
+    public String sub5(Model model) {
+        model.addAttribute("value", Map.of(
+                "home", "제주",
+                "address", "세화",
+                "birth date", "2010-08-17",
+                "score", 98.76
+        ));
+
+        return "main5/sub5";
+    }
+
+    @RequestMapping("sub6")
+    public String sub6(Model model) {
+        model.addAttribute("car", Map.of(
+                "model", "sonata",
+                "company", "hyundai",
+                "price", "30,000,000",
+                "used", false,
+                "pre user", "hongjae"
+        ));
+        return "main5/sub6";
     }
 }
