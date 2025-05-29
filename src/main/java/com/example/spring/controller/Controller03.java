@@ -95,4 +95,18 @@ public class Controller03 {
     public void sub11(MyBean037 param) {
         System.out.println(param);
     }
+
+    // /main3/sub12?name=donald&age=66&skill=work&skill=baseball&skill=java&skill=css
+    @RequestMapping("sub12")
+    public void sub12(MyBean0310 param) {
+        System.out.println(param);
+    }
+
+    // 연습
+    // /main3/sub13?hobby=cook&hobby=walk&hobby=running&score=3.3&score=4.4&score=5.5
+    // dto(MyBean0311) 와 request handler method 만들기
+    @RequestMapping("sub13")
+    public void sub13(MyBean0311 param) {
+        System.out.println(param);
+    }
 }
