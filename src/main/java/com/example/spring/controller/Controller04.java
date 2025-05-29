@@ -1,0 +1,53 @@
+package com.example.spring.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+@Controller
+@RequestMapping("main4")
+public class Controller04 {
+    @RequestMapping("sub1")
+    @ResponseBody
+    public String sub1() {
+        // 1. 요청 분석 / 가공
+        // 2. 요청 처리 (business logic)
+        // 3. 결과(html) 응답
+
+        // /main4/sub1
+        String htmlCode = """
+                <!DOCTYPE html>
+                <html>
+                <body>
+                    <h1>서버가 응답한 html 코드</h1>
+                    <p>이렇게 html 을 작성하는 것은 너무 고통스럽다.</p>
+                </body>
+                </html>
+                """;
+        return htmlCode;
+    }
+
+    @RequestMapping("sub2")
+    @ResponseBody
+    public String sub2(String keyword) {
+        String weather = switch (keyword) {
+            case "서울" -> "맑음";
+            case "울릉도" -> "바람 강함";
+            default -> "알 수 없음";
+        };
+
+        String htmlCode = """
+                <!DOCTYPE html>
+                <html>
+                <body>
+                    <h1>검색한 지역의 날씨</h1>
+                    <h3>""" + weather + """
+                    </h3>
+                </body>
+                </html>
+                
+                """;
+        return htmlCode;
+    }
+
+}
