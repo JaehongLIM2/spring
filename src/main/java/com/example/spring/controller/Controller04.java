@@ -50,4 +50,25 @@ public class Controller04 {
         return htmlCode;
     }
 
+    @RequestMapping("sub3")
+    public String sub3() {
+
+        // 3. html 코드 응답
+
+        // thymeleaf html 파일 위치
+        // src/main/resources/templates/main4/sub3.html
+
+        // view 로 forward 함
+        return "main4/sub3";
+    }
+
+    // 연습
+    // /main4/sub4 로 요청 올 때
+    // 아래 html 이 최종 응답 되도록 request handler method 를 작성해보세요.
+    // src/main/resources/templates/main4/sub4.html
+
+    @RequestMapping("sub4")
+    public String sub4() {
+        return "main4/sub4";
+    }
 }
