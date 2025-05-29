@@ -109,4 +109,10 @@ public class Controller04 {
         return "main4/sub7";
 
     }
+
+    @RequestMapping("sub8")
+    public String sub8(Model model) {
+        model.addAttribute("number", 123415);
+        return "main4/sub8";
+    }
 }
