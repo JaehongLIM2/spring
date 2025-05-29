@@ -1,7 +1,6 @@
 package com.example.spring.controller;
 
-import com.example.spring.dto.MyBean031;
-import com.example.spring.dto.MyBean032;
+import com.example.spring.dto.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -65,7 +64,26 @@ public class Controller03 {
         System.out.println("param.getCompany() = " + param.getCompany());
         System.out.println("param.getHome() = " + param.getHome());
         System.out.println("param.getAge() = " + param.getAge());
-
     }
 
+    // /main3/sub8?nickName=Bob&age=55&address=seoul
+    @RequestMapping("sub8")
+    public void sub8(MyBean033 param) {
+        System.out.println(param);
+    }
+
+    // /main3/sub9?address=seoul&salary=50.5
+    @RequestMapping("sub9")
+    public void sub9(MyBean035 param) {
+        System.out.println(param);
+    }
+
+
+    // /main3/sub10?age=44&email=gmail&married=true&salary=40.4&name=donald
+    // 요청 파라미터 받는 MyBean036 클래스 만들고
+    // request handler method 작성
+    @RequestMapping("sub10")
+    public void sub10(MyBean036 param) {
+        System.out.println(param);
+    }
 }
