@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<a href="" th:href="@{/main8/sub4(animal='tiger')}">타이거</a>
+<a href="" th:href="@{/main8/sub4(animal='bear')}">곰</a>
+<a href="" th:href="@{/main8/sub4(animal='eagle')}">독수리</a>
+
+
+<hr>
+<img class="image"
+     src="../../static/images/tiger.jpg" alt=""
+     th:if="${animal != null}"
+     th:src="@{'/images/' + ${animal} + '.jpg'}" th:alt="동물이미지">
+
+<img class="image"
+     th:if="${animal != null}"
+     th:src="@{'/images/' + ${animal} + '.jpg'}"
+     alt="동물 이미지">
+</body>
+</html>

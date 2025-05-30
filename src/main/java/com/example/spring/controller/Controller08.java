@@ -3,6 +3,7 @@ package com.example.spring.controller;
 
 import com.example.spring.dto.MyBean0513;
 import com.example.spring.dto.MyBean053;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -38,6 +39,33 @@ public class Controller08 {
                 new MyBean0513("choi", "05-05", 8000)));
 
         return "main8/sub2";
+    }
+
+    @RequestMapping("sub3")
+    public String sub3(Model model, HttpSession session) {
+
+
+        return "main8/sub3";
+    }
+
+    @RequestMapping("sub4")
+    public String sub4(Model model, String animal) {
+
+        model.addAttribute("animal", animal);
+
+        return "main8/sub4";
+    }
+
+    @RequestMapping("sub5")
+    public String sub5(Model model) {
+
+        return "main8/sub5";
+    }
+
+    @RequestMapping("sub6")
+    public String sub6(Model model) {
+
+        return "main8/sub6";
     }
 
 }
