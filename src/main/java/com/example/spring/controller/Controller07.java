@@ -2,6 +2,7 @@ package com.example.spring.controller;
 
 import com.example.spring.dto.MyBean0511;
 import com.example.spring.dto.MyBean0513;
+import com.example.spring.dto.MyBean053;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,7 +17,7 @@ public class Controller07 {
     @RequestMapping("sub1")
     public String sub1(Model model) {
 
-        model.addAttribute("aiList", List.of("gpt","gemini", "grok", "deep"));
+        model.addAttribute("aiList", List.of("gpt", "gemini", "grok", "deep"));
 
         return "main7/sub1";
     }
@@ -33,11 +34,11 @@ public class Controller07 {
 
          */
         model.addAttribute("myList", List.of(
-                new MyBean0513("lee","01-01", 5000),
-                new MyBean0513("son","02-02", 6000),
-                new MyBean0513("lim","03-03", 7000),
-                new MyBean0513("park","04-04", 3000),
-                new MyBean0513("choi","05-05", 8000)));
+                new MyBean0513("lee", "01-01", 5000),
+                new MyBean0513("son", "02-02", 6000),
+                new MyBean0513("lim", "03-03", 7000),
+                new MyBean0513("park", "04-04", 3000),
+                new MyBean0513("choi", "05-05", 8000)));
 
 
         return "main7/sub2";
@@ -93,4 +94,34 @@ public class Controller07 {
 
         return "main7/sub8";
     }
+
+    @RequestMapping("sub9")
+    public String sub9(Model model) {
+        model.addAttribute("name", "son");
+        model.addAttribute("married", false);
+        model.addAttribute("working", true);
+        model.addAttribute("age", 55);
+        model.addAttribute("city", null);
+
+        model.addAttribute("student",
+                List.of(new MyBean053(10, 33.3, "trin", true),
+                        new MyBean053(20, 44.4, "elo", false),
+                        new MyBean053(30, 55.5, "son", true),
+                        new MyBean053(40, 66.6, "john", false),
+                        new MyBean053(50, 77.7, "hong", true)));
+        return "main7/sub9";
+    }
+
+    @RequestMapping("sub99")
+    public String sub99(Model model) {
+        model.addAttribute("student",
+                List.of(new MyBean053(10, 33.3, "trin", true),
+                        new MyBean053(20, 44.4, "elo", false),
+                        new MyBean053(30, 55.5, "son", true),
+                        new MyBean053(40, 66.6, "john", false),
+                        new MyBean053(50, 77.7, "hong", true)));
+
+        return "main7/sub99";
+    }
+
 }

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table>
+   <thead>
+   <tr>
+       <th>번호</th>
+       <th>무게</th>
+       <th>이름</th>
+       <th>결혼</th>
+   </tr>
+   </thead>
+    <tr th:each="student : ${student}">
+        <th:block th:object="${student}">
+        <td th:text="*{studentNumber}"></td>
+        <td th:text="*{weight}"></td>
+        <td th:text="*{info}"></td>
+        <td>
+            <span th:if="*{married}">❤️</span>
+            <span th:unless="*{married}">💔</span>
+        </td>
+    </tr>
+    <tbody>
+
+    </tbody>
+</table>
+</body>
+</html>

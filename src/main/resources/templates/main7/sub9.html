@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<!-- th:if : true 이면 표시 -->
+<!-- th:unless : false 이면 표시 -->
+
+<h1 th:if="${married}">Lorem.</h1>
+<h1 th:if="${!married}">Aspernatur?</h1>
+<h1 th:unless="${married}">Beatae.</h1>
+<h1 th:unless="${!married}">Distinctio!</h1>
+<h1 th:unless="${working}">Beatae.</h1>
+<hr>
+
+<h1>
+    <span th:if="${name == null}">이름 없음</span>
+    <span th:unless="${name == null}" th:text="${name}">회사 없음</span>
+</h1>
+
+<h1>
+    <span th:if="${city == null}">주소없음</span>
+    <span th:unless="${city == null}" th:text="${city}">주소없음</span>
+</h1>
+
+<hr>
+
+<!-- no-operation token(no-op) _ :  아무 연산 안함. 없음 -->
+<h1>Lorem ipsum dolor.</h1>
+<h1 th:text="${name}">Lorem ipsum dolor.</h1>
+<h1 th:text="_">Lorem ipsum dolor.</h1>
+<h1 th:text="${name} ?: _">이름 없음</h1>
+<h1 th:text="${city} ?: _">회사 없음</h1>
+
+
+</body>
+</html>
