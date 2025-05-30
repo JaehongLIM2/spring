@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!-- selection -->
+<div th:object="${person}">
+  <h3 th:text="*{number}"></h3>
+  <h4>company</h4>
+  <ul>
+    <li th:each="c : *{company}" th:text="${c}"></li>
+  </ul>
+  <h4>address</h4>
+  <ul>
+    <li th:each="a : *{address}" th:text="${a}"></li>
+  </ul>
+</div>
+
+<ul>
+  <li th:text="${person.number}"></li>
+  <li th:text="${person.company}"></li>
+  <li th:text="${person.address}"></li>
+</ul>
+</body>
+</html>
