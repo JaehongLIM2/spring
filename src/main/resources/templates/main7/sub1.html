@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!-- th:each 의 두 번째 변수는 loop의 상태를 속성으로 갖는 객체다. -->
+<!-- count(loop 횟수), index(요소의 index 번호), first(첫번째 요소?), last(마지막 요소?),
+      even(짝수번째?), odd(홀수번째?), size(총 요소의 갯수), current(현재 요소) -->
+
+<ul>
+  <li th:each="ai, stat : ${aiList}">
+    <span th:text="${stat.count}"></span>/<span th:text="${stat.size}"></span><span  th:text="${ai}"></span>
+  </li>
+</ul>
+
+<ul>
+  <li th:each="ai, stat : ${aiList}">
+    <span th:text="${stat.odd}"></span><span  th:text="${ai}"></span>
+  </li>
+</ul>
+
+
+<ul>
+  <li th:each="ai, stat : ${aiList}">
+    stat.odd/<span th:text="${stat.odd}"></span><span  th:text="${ai}"></span>
+  </li>
+</ul>
+
+
+<ul>
+  <li th:each="ai, stat : ${aiList}">
+    stat.even/<span th:text="${stat.even}"></span><span  th:text="${ai}"></span>
+  </li>
+</ul>
+
+<ul>
+  <li th:each="ai, stat : ${aiList}">
+    stat.index/ <span th:text="${stat.index}"></span><span  th:text="${ai}"></span>
+  </li>
+</ul>
+
+<hr>
+<ul>
+  <li th:each="ai, stat : ${aiList}">
+    stat.count/<span th:text="${stat.count}"></span><span  th:text="${ai}"></span>
+  </li>
+</ul>
+
+<hr>
+
+<ul>
+  <li th:each="ai : ${aiList}">
+    <span  th:text="${ai}"></span>
+  </li>
+</ul>
+
+<hr>
+
+  <ul>
+    <li th:each="ai : ${aiList}" th:text="${ai}"></li>
+  </ul>
+</body>
+</html>
