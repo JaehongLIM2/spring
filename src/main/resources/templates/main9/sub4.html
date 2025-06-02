@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h3> /main9/sub4</h3>
+
+
+<form th:action="@{/main9/sub9}">
+<!--    숨겨진 input 요소-->
+    <div>
+        <input type="hidden" name="hidden" value="숨겨진값">
+    </div>
+<!--    file-->
+    <div>
+        <input type="file" name="file">
+    </div>
+
+<!--    email-->
+    <div>
+        <input type="email" name="mailaddress">
+    </div>
+
+<!--    날짜 시간-->
+    <div>
+        <input type="datetime-local" name="start">
+    </div>
+<!--    날짜-->
+    <div>
+        <input type="date" name="birth">
+    </div>
+
+    <!--    password field-->
+    <div>
+        <input type="password" name="pw">
+    </div>
+    <!--    text field-->
+    <div>
+        <input type="text" name="name">
+    </div>
+    <!--    number field-->
+    <div>
+        <input type="number" min="0" max="10" step="0.1" name="score">
+    </div>
+    <!--    submit 버튼-->
+    <div>
+        <input type="submit">
+    </div>
+</form>
+
+
+<hr>
+<!--form 사용자가 입력한 내용을 쿼리스트링에 붙여서 요청을 보냄-->
+<!--action 속성 : 쿼리스트링(request parameters)를 어디로 보낼 지 결정-->
+<form th:action="@{/main9/sub8}">
+    <!--    value 속성 : 기본값 적용-->
+    <input type="text" name="address" value="seoul">
+
+    <!--    연습 :
+    name, age 요청 파라미터를 작성할 수 있는
+    name 기본값 : 홍길동
+    age 기본값 : 1
+     input 요소 만들기-->
+
+    <input type="text" name="name" value="홍길동">
+    <input type="text" name="age" value="1">
+    <button>저장</button>
+</form>
+
+
+<br>
+<form th:action="@{/main9/sub7}">
+    <input type="submit">
+    <button>저장</button>
+
+    <input type="button" value="그냥1">
+    <button type="button">그냥2</button>
+
+</form>
+
+
+<br>
+
+<form th:action="@{/main9/sub6}">
+    <div>
+        <input type="text" name="address">
+    </div>
+    <div>
+        <input type="text" name="age">
+    </div>
+    <div>
+        <input type="text" name="city">
+    </div>
+
+    <div>
+        <input type="submit" value="전송">
+    </div>
+
+    <br>
+</form>
+
+<hr>
+<!--    form 요소들(input, textarea, select)
+                    : request parameter 를 완성하는 요소-->
+<!--    input, type=text -->
+<!--    name 속성 : request parameter의 이름-->
+<div>
+    <input type="text" name="keyword">
+</div>
+<div>
+    <input type="text" name="email">
+</div>
+
+
+<!--    submit button
+                    : 클릭하면 form 내의 요소들로 쿼리스트링을 만들어서 action으로 요청 보냄-->
+<div>
+    <input type="submit" value="저장">
+</div>
+
+</form>
+
+</body>
+</html>
