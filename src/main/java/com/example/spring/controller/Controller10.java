@@ -46,7 +46,7 @@ public class    Controller10 {
     public String sub5() {
         System.out.println("Controller10.sub4.GET");
 
-        return "/main10/sub4";
+        return "/main10/sub3";
     }
 
 //    @RequestMapping(value = "sub4", method = RequestMethod.POST)
@@ -54,6 +54,6 @@ public class    Controller10 {
     public String sub6() {
         System.out.println("Controller10.sub4.POST");
 
-        return "/main10/sub4";
+        return "/main10/sub3";
     }
 }
