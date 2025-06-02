@@ -6,12 +6,80 @@
 </head>
 <body>
 <h3> /main9/sub4</h3>
+<form action="">
+    <div>
+        <textarea name="info3" id="" cols="30" rows="10"
+                  placeholder="정보를 입력하세요"
+                  required
+        ></textarea>
+    </div>
+
+    <div>
+        <textarea name="info2" id="" cols="30" rows="10">기본 텍스트 입력</textarea>
+    </div>
+    <div>
+        <!--      textatra : 긴 텍스트 작성용 -->
+        <textarea name="info" id="" cols="30" rows="10"></textarea>
+    </div>
+    <div>
+        <input type="text" name="city">
+    </div>
+    <div>
+        <input type="submit" value="전송">
+    </div>
+</form>
 
 
+<hr>
+
+<form th:action="@{/main9/sub13}">
+    <!--  request handler method를 보고 아래 input 요소들 만들기   -->
+    <div>
+        <label for="input1">도시</label>
+        <input type="text" id="input1" name="city">
+    </div>
+    <div>
+        <label for="input2">나이</label>
+        <input type="number" id="input2" name="age">
+    </div>
+    <div>
+        <label for="input3">점수</label>
+        <input type="number" step="0.01" id="input3" name="score">
+    </div>
+    <div>
+        <label for="check1">사과</label>
+        <input type="checkbox" id="check1" name="fruits" value="apple">
+        <label for="check2">망고</label>
+        <input type="checkbox" id="check2" name="fruits" value="mango">
+        <label for="check3">멜론</label>
+        <input type="checkbox" id="check3" name="fruits" value="melon">
+    </div>
+    <div>
+        <label for="radio1">동의</label>
+        <input type="radio" name="accepted" id="radio1" value="true">
+        <label for="radio2">동의안함</label>
+        <input type="radio" name="accepted" id="radio2" value="false">
+    </div>
+    <div>
+        <input type="submit" value="전송">
+    </div>
+</form>
+
+<form action="">
+    <!--    required : 필수 입력-->
+    <input type="text" name="city" required>
+    <!--    multiple : 여러개 선택 가능-->
+    <input type="file" name="f" multiple>
+    <!--    placeholder : 입력할 값의 hint-->
+    <input type="text" name="address" placeholder="주소를 입력하세요.">
+    <!--    readonly : 변경 불가-->
+    <input type="text" name="name" value="홍길동" readonly>
+
+    <input type="submit">
+</form>
 
 
-
-
+<hr>
 <form th:action="@{/main9/sub12}">
     <div>
 
