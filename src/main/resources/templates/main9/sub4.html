@@ -8,26 +8,115 @@
 <h3> /main9/sub4</h3>
 
 
+
+
+
+
+<form th:action="@{/main9/sub12}">
+    <div>
+
+        <label for="radio-korea">한국</label>
+        <input type="radio" name="country" id="radio-korea" value="korea" checked>
+        <label for="radio-japan">일본</label>
+        <input type="radio" name="country" id="radio-japan" value="japan">
+        <label for="radio-us">미국</label>
+        <input type="radio" name="country" id="radio-us" value="america">
+
+    </div>
+
+
+    <input type="submit">
+    <hr>
+    <!--    radio button :
+                        같은 name 중에 하나의 값만 선택 가능-->
+    <div>
+        <label for="radio-mango"></label>
+        <input type="radio" name="fruit" id="radio-mango" value="mango">
+        망고
+        <label for="radio-melon"></label>
+        <input type="radio" name="fruit" id="radio-melon" value="melon" checked>
+        멜론
+        <label for="radio-apple"></label>
+        <input type="radio" name="fruit" id="radio-apple" value="apple">
+        애플
+
+        <input type="submit">
+    </div>
+</form>
+
+<hr>
+value="s"
+<form th:action="@{/main9/sub11}">
+    <!--    label : 특정 input에 붙인 텍스트-->
+    <label for="input-mango">망고</label>
+    <input type="checkbox" name="fruit" id="input-mango" value="mango">
+    <label for="input-mellon">멜론</label>
+    <input type="checkbox" name="fruit" id="input-mellon" value="melon">
+    <label for="input-apple">사과</label>
+    <input type="checkbox" name="fruit" id="input-apple" value="apple">
+    <label>
+        바나나
+        <input type="checkbox" name="friut" id="" value="banana">
+    </label>
+
+    <div>
+        <label for="input-text">
+            이름
+        </label>
+        <input type="text" id="input-text" name="name" value="머스크">
+    </div>
+</form>
+
+<hr>
+
+<form th:action="@{/main9/sub10}">
+    <div>
+        <input type="checkbox" name="hobby" id="" value="baseball">
+        야구
+        <input type="checkbox" name="hobby" id="" value="basketball">
+        농구
+        <input type="checkbox" name="hobby" id="" value="football">
+        축구
+        <input type="checkbox" name="hobby" id="" value="rugby">
+        럭비
+        <input type="checkbox" name="hobby" id="" value="cook">
+        요리
+    </div>
+    <!--    연습 : 체크하면 hello라는 값이 넘어갈 수 있는 checkbox 만들기-->
+    <div>
+        <input type="checkbox" name="example" value="hello" checked>
+    </div>
+    <!--    checkbox-->
+    <div>
+        <input type="checkbox" name="accept" value="true">
+    </div>
+
+    <div>
+        <input type="submit" value="전송">
+    </div>
+
+</form>
+<hr>
 <form th:action="@{/main9/sub9}">
-<!--    숨겨진 input 요소-->
+    <!--    숨겨진 input 요소-->
     <div>
         <input type="hidden" name="hidden" value="숨겨진값">
     </div>
-<!--    file-->
+    <!--    file-->
     <div>
         <input type="file" name="file">
     </div>
 
-<!--    email-->
+    <!--    email-->
     <div>
         <input type="email" name="mailaddress">
     </div>
 
-<!--    날짜 시간-->
+    <!--    날짜 시간-->
     <div>
         <input type="datetime-local" name="start">
     </div>
-<!--    날짜-->
+    <!--    날짜-->
     <div>
         <input type="date" name="birth">
     </div>
