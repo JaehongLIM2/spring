@@ -1,5 +1,6 @@
 package com.example.spring.controller;
 
+import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -120,10 +121,50 @@ public class Controller12 {
 
     // login 처리
     @PostMapping("sub11")
-    public String sub11Process(String id, RedirectAttributes rttr) {
+    public String sub11Process(String id, RedirectAttributes rttr, HttpSession session) {
 
+        session.setAttribute("userId", id);
         System.out.println(id + "로그인 처리");
         rttr.addFlashAttribute("message", id + "님이 로그인 되었습니다");
         return "redirect:/main12/sub10";
     }
+
+    @RequestMapping("sub11/logout")
+    public String sub11Logout(HttpSession session, RedirectAttributes rttr) {
+        // session attribute 만 지우기
+//        session.removeAttribute("userId");
+
+        // session 객체 지우기
+        session.invalidate();
+
+        rttr.addFlashAttribute("message", "로그아웃되었습니다");
+
+        return "redirect:/main12/sub10";
+    }
+
+
+    // 메인 페이지
+    @GetMapping("sub12")
+    public String sub12(Model model) {
+
+        return "main12/sub12";
+    }
+
+    // 로그인 페이지
+    @GetMapping("sub13")
+    public String sub13(Model model) {
+
+        return "main12/sub13";
+    }
+
+    // 로그인 처리
+    @PostMapping("sub13")
+    public String sub13process(String id, RedirectAttributes rttr) {
+
+        rttr.addFlashAttribute("message", id + "님이 로그인 되었습니다.");
+
+
+        return "redirect:/main12/sub12";
+    }
+
 }
