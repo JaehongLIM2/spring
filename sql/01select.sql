@@ -50,3 +50,31 @@ FROM Shippers;
 # SELECT : 열을 선택
 # FROM : 테이블 지정
 # WHERE : 행을 선택(filter)
+
+SELECT *
+FROM Shippers;
+
+SELECT *
+FROM Customers;
+
+# 연습 : Employees 테이블 조회
+SELECT *
+FROM Employees;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
