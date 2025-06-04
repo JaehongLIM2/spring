@@ -44,9 +44,26 @@ SELECT ProductName, Price, CategoryID
 FROM Products
 ORDER BY CategoryID, Price DESC;
 
+#
+SELECT Country, City, CustomerName
+FROM Customers;
 
+# 컬럼의 순서 사용
+SELECT Country, City, CustomerName
+FROM Customers
+ORDER BY Country, City;
 
+SELECT Country, City, CustomerName
+FROM Customers
+ORDER BY 1, 2;
 
+SELECT ProductName, CategoryID, Price
+FROM Products
+ORDER BY Price DESC;
+
+SELECT ProductName, CategoryID, Price
+FROM Products
+ORDER BY 3 DESC;
 
 
 
