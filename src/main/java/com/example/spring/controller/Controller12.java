@@ -68,5 +68,39 @@ public class Controller12 {
         return "main12/sub5";
     }
 
+    @GetMapping("sub6")
+    public String sub6(RedirectAttributes rttr) {
+
+        // 다음 요청 model 에 옮겨 담음
+        rttr.addFlashAttribute("nickName", "trump");
+
+        // query string 에 붙음
+        // ?address=jeju
+        rttr.addAttribute("address", "jeju");
+
+
+        return "redirect:/main12/sub7";
+    }
+
+    @GetMapping("sub7")
+    public String sub7(Model model) {
+
+        return "main12/sub7";
+    }
+
+    @GetMapping("sub8")
+    public String sub8(RedirectAttributes rttr) {
+
+        rttr.addFlashAttribute("item", "car");
+        rttr.addAttribute("company", "tesla");
+
+        return "redirect:/main12/sub9";
+    }
+
+    @GetMapping("sub9")
+    public String sub9(Model model) {
+
+        return "main12/sub9";
+    }
 
 }
