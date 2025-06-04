@@ -3,6 +3,7 @@ package com.example.spring.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -103,4 +104,26 @@ public class Controller12 {
         return "main12/sub9";
     }
 
+    // main
+    @GetMapping("sub10")
+    public String sub10(Model model) {
+
+        return "main12/sub10";
+    }
+
+    // login page
+    @GetMapping("sub11")
+    public String sub11(Model model) {
+
+        return "main12/sub11";
+    }
+
+    // login 처리
+    @PostMapping("sub11")
+    public String sub11Process(String id, RedirectAttributes rttr) {
+
+        System.out.println(id + "로그인 처리");
+        rttr.addFlashAttribute("message", id + "님이 로그인 되었습니다");
+        return "redirect:/main12/sub10";
+    }
 }
