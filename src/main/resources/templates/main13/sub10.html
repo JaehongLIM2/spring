@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <style>
+    table, tr, td, th {
+      border-collapse: collapse;
+      border: 1px solid black;
+    }
+  </style>
+</head>
+<body>
+<h3>상품 목록</h3>
+<table>
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>NAME</th>
+    <th>SUPPLIER</th>
+    <th>CATEGORY</th>
+    <th>UNIT</th>
+    <th>PRICE</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="list : ${productList}">
+    <td th:text="${list.productID}"></td>
+    <td th:text="${list.productName}"></td>
+    <td th:text="${list.supplierID}"></td>
+    <td th:text="${list.categoryID}"></td>
+    <td th:text="${list.unit}"></td>
+    <td th:text="${list.price}"></td>
+  </tr>
+  </tbody>
+</table>
+</body>
+</html>

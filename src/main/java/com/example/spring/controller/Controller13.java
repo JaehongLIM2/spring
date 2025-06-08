@@ -1,6 +1,7 @@
 package com.example.spring.controller;
 
 
+import com.example.spring.dto.CustomerDto;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,14 +11,13 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 @Controller
 @RequestMapping("main13")
 public class Controller13 {
     @GetMapping("sub1")
-    public String sub1(Model model) throws Exception{
+    public String sub1(Model model) throws Exception {
         // 1. request 분석 / 가공
         //    @GetMapping, PostMapping, RequestParam
 
@@ -61,7 +61,7 @@ public class Controller13 {
     // /main13/sub2.html
 
     @GetMapping("sub2")
-    public String sub2(Model model) throws Exception{
+    public String sub2(Model model) throws Exception {
         String url = "jdbc:mysql://localhost:3306/w3schools";
         String username = "root";
         String password = "1234";
@@ -87,7 +87,7 @@ public class Controller13 {
     }
 
     @GetMapping("sub3")
-    public String sub3(Model model) throws Exception{
+    public String sub3(Model model) throws Exception {
         // 연결
         String url = "jdbc:mysql://localhost:3306/w3schools";
         String username = "root";
@@ -135,7 +135,7 @@ public class Controller13 {
     }
 
     @GetMapping("sub4")
-    public String sub4(Model model) throws Exception{
+    public String sub4(Model model) throws Exception {
 
         // 연결
         String url = "jdbc:mysql://localhost:3306/w3schools";
@@ -168,8 +168,9 @@ public class Controller13 {
 
         return "main13/sub3";
     }
+
     @GetMapping("sub5")
-    public String sub5(Model model) throws Exception{
+    public String sub5(Model model) throws Exception {
         String url = "jdbc:mysql://localhost:3306/w3schools";
         String username = "root";
         String password = "1234";
@@ -196,7 +197,7 @@ public class Controller13 {
     }
 
     @GetMapping("sub6")
-    public String sub6(Model model) throws Exception{
+    public String sub6(Model model) throws Exception {
         String url = "jdbc:mysql://localhost:3306/w3schools";
         String username = "root";
         String password = "1234";
@@ -229,7 +230,7 @@ public class Controller13 {
     }
 
     @GetMapping("sub7")
-    public String sub7(Model model) throws Exception{
+    public String sub7(Model model) throws Exception {
         String url = "jdbc:mysql://localhost:3306/w3schools";
         String username = "root";
         String password = "1234";
@@ -252,6 +253,184 @@ public class Controller13 {
         }
         model.addAttribute("quantityList", list);
         return "main13/sub7";
+    }
+
+    @GetMapping("sub8")
+    public String sub8(Model model) throws Exception {
+        String sql = """
+                SELECT LastName, FirstName 
+                FROM Employees
+                """;
+
+        String url = "jdbc:mysql://localhost:3306/w3schools";
+        String username = "root";
+        String password = "1234";
+        Connection connection = DriverManager.getConnection(url, username, password);
+        PreparedStatement statement = connection.prepareStatement(sql);
+        ResultSet resultSet = statement.executeQuery();
+
+        var list = new ArrayList<Map<String, String>>();
+        while (resultSet.next()) {
+            String lastName = resultSet.getString("LastName");
+            String firstName = resultSet.getString("FirstName");
+
+            var name = new HashMap<String, String>();
+            name.put("LastName", lastName);
+            name.put("FirstName", firstName);
+
+            list.add(name);
+        }
+        model.addAttribute("nameList", list);
+        return "main13/sub8";
+    }
+
+    // 연습
+    // 고객 테이블에서 미국과 영국에 사는 고객이름과 국가
+    // main13/sub9.html 에서 출력
+
+    @GetMapping("sub9")
+    public String sub9(Model model) throws Exception {
+        String sql = """
+                SELECT CustomerName, City, Country
+                FROM Customers
+                WHERE Country IN ('USA', 'UK')
+                ORDER BY Country, City
+                """;
+        String url = "jdbc:mysql://localhost:3306/w3schools";
+        String username = "root";
+        String password = "1234";
+        Connection connection = DriverManager.getConnection(url, username, password);
+        PreparedStatement statement = connection.prepareStatement(sql);
+        ResultSet resultSet = statement.executeQuery();
+
+        var list = new ArrayList<Map<String, String>>();
+        while (resultSet.next()) {
+            String name = resultSet.getString("CustomerName");
+            String country = resultSet.getString("Country");
+            String city = resultSet.getString("City");
+
+            var customers = new HashMap<String, String>();
+            customers.put("CustomerName", name);
+            customers.put("Country", country);
+            customers.put("City", city);
+
+            list.add(customers);
+        }
+        model.addAttribute("customerList", list);
+
+        return "main13/sub9";
+    }
+
+    @GetMapping("sub10")
+    public String sub10(Model model) throws Exception {
+        String sql = """
+                SELECT *
+                FROM Products
+                """;
+        String url = "jdbc:mysql://localhost:3306/w3schools";
+        String username = "root";
+        String password = "1234";
+        Connection connection = DriverManager.getConnection(url, username, password);
+        PreparedStatement statement = connection.prepareStatement(sql);
+        ResultSet resultSet = statement.executeQuery();
+
+        var list = new ArrayList<Map<String, Object>>();
+        while (resultSet.next()) {
+            int productId = resultSet.getInt("ProductId");
+            String productName = resultSet.getString("ProductName");
+            int supplierID = resultSet.getInt("SupplierID");
+            int categoryID = resultSet.getInt("CategoryID");
+            String unit = resultSet.getString("Unit");
+            double price = resultSet.getDouble("Price");
+
+            Map<String, Object> map = new HashMap<>();
+            map.put("productId", productId);
+            map.put("productName", productName);
+            map.put("supplierID", supplierID);
+            map.put("categoryID", categoryID);
+            map.put("unit", unit);
+            map.put("price", price);
+            list.add(map);
+        }
+
+        model.addAttribute("productList", list);
+        return "main13/sub10";
+    }
+
+    @GetMapping("sub11")
+    public String sub11(Model model) throws Exception {
+        String sql = """
+                SELECT *
+                FROM Customers
+                ORDER BY CustomerID
+                """;
+
+        String url = "jdbc:mysql://localhost:3306/w3schools";
+        String username = "root";
+        String password = "1234";
+        Connection connection = DriverManager.getConnection(url, username, password);
+        PreparedStatement statement = connection.prepareStatement(sql);
+
+        ResultSet resultSet = statement.executeQuery();
+        var list = new ArrayList<Map<String, Object>>();
+        while (resultSet.next()) {
+            int id = resultSet.getInt("CustomerId");
+            String name = resultSet.getString("CustomerName");
+            String address = resultSet.getString("Address");
+            String city = resultSet.getString("City");
+            String postalCode = resultSet.getString("PostalCode");
+            String country = resultSet.getString("Country");
+
+            var map = new HashMap<String, Object>();
+            map.put("id", id);
+            map.put("name", name);
+            map.put("address", address);
+            map.put("city", city);
+            map.put("postalCode", postalCode);
+            map.put("country", country);
+            list.add(map);
+        }
+        model.addAttribute("customerList", list);
+        return "main13/sub11";
+    }
+
+    @GetMapping("sub12")
+    public String sub12(Model model) throws Exception {
+        String sql = """
+                SELECT *
+                FROM Customers
+                """;
+        String url = "jdbc:mysql://localhost:3306/w3schools";
+        String username = "root";
+        String password = "1234";
+        Connection connection = DriverManager.getConnection(url, username, password);
+        PreparedStatement statement = connection.prepareStatement(sql);
+        ResultSet resultSet = statement.executeQuery();
+
+        var list = new ArrayList<CustomerDto>();
+
+        while (resultSet.next()) {
+            String customerName = resultSet.getString("CustomerName");
+            int customerID = resultSet.getInt("CustomerID");
+            String contactName = resultSet.getString("ContactName");
+            String address = resultSet.getString("Address");
+            String city = resultSet.getString("City");
+            String country = resultSet.getString("Country");
+            String postalCode = resultSet.getString("PostalCode");
+
+            CustomerDto dto = new CustomerDto();
+            dto.setId(customerID);
+            dto.setName(customerName);
+            dto.setContactName(contactName);
+            dto.setAddress(address);
+            dto.setCity(city);
+            dto.setPostalCode(postalCode);
+            dto.setCountry(country);
+
+            list.add(dto);
+        }
+        model.addAttribute("customerList", list);
+        return "main13/sub12";
     }
 
 }

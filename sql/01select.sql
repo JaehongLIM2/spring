@@ -8,7 +8,7 @@ FROM Customers;
 
 # ctrl enter
 # 쿼리(sql) 실행
-# 한 명령문(쿼리)는 ; 으로 끝남
+# 한 명령문(쿼리)는 ; 으로 끝
 
 SELECT *
 FROM Employees;
