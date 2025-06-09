@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h3>페이지별 공급자 조회</h3>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>LNAME</th>
+        <th>FNAME</th>
+        <th>BDATE</th>
+        <th>PHOTO</th>
+        <th>NOTES</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="emp : ${employeeList}">
+        <td th:text="${emp.id}"></td>
+        <td th:text="${emp.lastName}"></td>
+        <td th:text="${emp.firstName}"></td>
+        <td th:text="${emp.birthDate}"></td>
+        <td th:text="${emp.photo}"></td>
+        <td th:text="${emp.notes}"></td>
+    </tr>
+    </tbody>
+</table>
+<div>
+    <span th:each="num : ${#numbers.sequence(1, lastPage)}">
+        <a th:href="@{/main15/sub2(page=${num})}"
+        th:text="${num}"></a>
+    </span>
+</div>
+</body>
+</html>

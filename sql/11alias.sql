@@ -29,7 +29,8 @@ FROM Products p,
      Categories c;
 
 
-
+SELECT *
+FROM Employees
 
 
 
