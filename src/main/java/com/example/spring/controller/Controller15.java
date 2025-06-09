@@ -141,31 +141,31 @@ public class Controller15 {
 
     // 검색 + 페이징
     @GetMapping("sub3")
-    public String sub3(@RequestParam(defaultValue = "1") Integer page,
-                       @RequestParam(defaultValue = "") String keyword,
-                       Model model) throws Exception {
+    public String sub3(
+            @RequestParam(defaultValue = "1")
+            Integer page,
+            @RequestParam(defaultValue = "")
+            String keyword,
+            Model model) throws Exception {
 
         String countSql = """
                 SELECT COUNT(*) AS count
                 FROM Customers
                 WHERE CustomerName LIKE ?
-                    OR ContactName LIKE ?
+                   OR ContactName LIKE ?
                 """;
-
         String sql = """
                 SELECT *
                 FROM Customers
                 WHERE CustomerName LIKE ?
-                    OR ContactName LIKE ?
+                   OR ContactName LIKE ?
                 ORDER BY CustomerID
                 LIMIT ?, ?
                 """;
-
         String url = "jdbc:mysql://localhost:3306/w3schools";
         String username = "root";
         String password = "1234";
         Connection connection = DriverManager.getConnection(url, username, password);
-
         PreparedStatement countStmt = connection.prepareStatement(countSql);
         countStmt.setString(1, "%" + keyword + "%");
         countStmt.setString(2, "%" + keyword + "%");
@@ -179,9 +179,18 @@ public class Controller15 {
 
         ResultSet rs1 = countStmt.executeQuery();
         rs1.next();
-        int count = rs1.getInt("count");
-        int lastPage = (count - 1) / 5 + 1;
-        model.addAttribute("lastPage", lastPage);
+        int count = rs1.getInt("count"); // 총 레코드 수
+        int lastPage = (count - 1) / 5 + 1; // 마지막 페이지
+        int rightPage = ((page - 1) / 10 + 1) * 10; // 오른쪽 페이지 번호
+        int leftPage = rightPage - 9;//왼쪽 페이지 번호
+        int prevPage = leftPage - 10;
+        int nextPage = rightPage + 1;
+        rightPage = Math.min(rightPage, lastPage); // 오른쪽 페이지 번호는 마지막 페이지번호 보다 클 수없다.
+        model.addAttribute("lastPage", lastPage); // 마지막 페이지
+        model.addAttribute("rightPage", rightPage);
+        model.addAttribute("leftPage", leftPage);
+        model.addAttribute("prevPage", prevPage);
+        model.addAttribute("nextPage", nextPage);
 
         ResultSet rs2 = selectStmt.executeQuery();
         List<CustomerDto> list = new ArrayList<>();
@@ -194,17 +203,18 @@ public class Controller15 {
             customerDto.setCity(rs2.getString("City"));
             customerDto.setPostalCode(rs2.getString("PostalCode"));
             customerDto.setCountry(rs2.getString("Country"));
-
             list.add(customerDto);
+
         }
         model.addAttribute("customerList", list);
 
-
         return "main15/sub3";
+
     }
 
     // 연습 :
     // 상품명 조회 로직 작성(w/ paging)
+    // 페이지네이션 완성(이전, 다음)
     @GetMapping("sub4")
     public String sub4(@RequestParam(defaultValue = "1") Integer page,
                        @RequestParam(defaultValue = "") String keyword,
@@ -243,7 +253,18 @@ public class Controller15 {
         rs1.next();
         int count = rs1.getInt("count");
         int lastPage = (count - 1) / 5 + 1;
+        int rightPage = ((page - 1) / 10 + 1) * 10;
+        int leftPage = rightPage - 9;
+        int prevPage = leftPage - 10;
+        if (prevPage < 1) prevPage = 1;
+        int nextPage = rightPage + 1;
+        if (nextPage > lastPage) nextPage = lastPage;
+        rightPage = Math.min(rightPage, lastPage);
         model.addAttribute("lastPage", lastPage);
+        model.addAttribute("rightPage", rightPage);
+        model.addAttribute("leftPage", leftPage);
+        model.addAttribute("prevPage", prevPage);
+        model.addAttribute("nextPage", nextPage);
 
         ResultSet rs2 = selectStmt.executeQuery();
         List<ProductDto> list = new ArrayList<>();
