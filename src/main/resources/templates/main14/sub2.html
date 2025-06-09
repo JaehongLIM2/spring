@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        table, th, tr, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+<body>
+<h3>이름으로 고객 조회</h3>
+<hr>
+<form th:action="@{/main14/sub2}" method="get">
+    <label>
+        검색
+        <input type="text" name="keyword" th:value="${param.keyword ?: ''}">
+    </label>
+</form>
+<hr>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>CustomerNAME</th>
+        <th>ContactName</th>
+        <th>Address</th>
+        <th>City</th>
+        <th>PostalCode</th>
+        <th>Country</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="cus : ${customerList}">
+        <td th:text="${cus.id}"></td>
+        <td th:text="${cus.name}"></td>
+        <td th:text="${cus.contactName}"></td>
+        <td th:text="${cus.address}"></td>
+        <td th:text="${cus.city}"></td>
+        <td th:text="${cus.postalCode}"></td>
+        <td th:text="${cus.country}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

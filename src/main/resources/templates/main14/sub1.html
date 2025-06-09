@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h3>Notes로 직원 조회</h3>
+<hr>
+<form action="@{/main14/sub1}">
+    <label>
+        검색
+        <input type="text" name="keyword" th:value="${param.keyword ?: ''}">
+    </label>
+</form>
+<hr>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>LNAME</th>
+        <th>FNAME</th>
+        <th>BDATE</th>
+        <th>PHOTO</th>
+        <th>NOTES</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="emp : ${employeeList}">
+        <td th:text="${emp.id}"></td>
+        <td th:text="${emp.lastName}"></td>
+        <td th:text="${emp.firstName}"></td>
+        <td th:text="${emp.birthDate}"></td>
+        <td th:text="${emp.photo}"></td>
+        <td th:text="${emp.notes}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
