@@ -251,4 +251,144 @@ public class Controller16 {
 
         return "redirect:/main16/sub4";
     }
+
+    // update
+    @GetMapping("sub5")
+    public String select1(Integer id, Model model) throws Exception {
+
+        if (id != null) {
+            String sql = """
+                    SELECT *
+                    FROM Customers
+                    WHERE CustomerId = ?
+                    """;
+            String url = "jdbc:mysql://localhost:3306/w3schools";
+            String username = "root";
+            String password = "1234";
+            Connection connection = DriverManager.getConnection(url, username, password);
+            PreparedStatement statement = connection.prepareStatement(sql);
+
+            statement.setInt(1, id);
+            ResultSet resultSet = statement.executeQuery();
+
+            if (resultSet.next()) {
+                CustomerDto customerDto = new CustomerDto();
+                customerDto.setId(resultSet.getInt("CustomerId"));
+                customerDto.setName(resultSet.getString("CustomerName"));
+                customerDto.setContactName(resultSet.getString("ContactName"));
+                customerDto.setAddress(resultSet.getString("Address"));
+                customerDto.setCity(resultSet.getString("City"));
+                customerDto.setCountry(resultSet.getString("Country"));
+                customerDto.setPostalCode(resultSet.getString("PostalCode"));
+                model.addAttribute("customer", customerDto);
+            }
+        }
+
+
+        return "main16/sub5";
+    }
+
+    @PostMapping("sub5")
+    public String update1(CustomerDto customer, RedirectAttributes rttr) throws Exception {
+        String sql = """
+                UPDATE Customers
+                SET CustomerName = ?,
+                    ContactName = ?,
+                    Address = ?,
+                    City = ?,
+                    PostalCode = ?,
+                    Country = ?
+                WHERE CustomerId = ?
+                """;
+
+        String url = "jdbc:mysql://localhost:3306/w3schools";
+        String username = "root";
+        String password = "1234";
+        Connection connection = DriverManager.getConnection(url, username, password);
+        PreparedStatement statement = connection.prepareStatement(sql);
+        statement.setString(1, customer.getName());
+        statement.setString(2, customer.getContactName());
+        statement.setString(3, customer.getAddress());
+        statement.setString(4, customer.getCity());
+        statement.setString(5, customer.getPostalCode());
+        statement.setString(6, customer.getCountry());
+        statement.setInt(7, customer.getId());
+        statement.executeUpdate();
+
+        rttr.addAttribute("id", customer.getId());
+
+        return "redirect:/main16/sub5";
+    }
+
+    // 연습 :
+    // 공급자 정보 조회 / 수정
+    // request handler method * 2, html * 1
+
+    @GetMapping("sub6")
+    public String select2(Integer id, Model model) throws Exception {
+        if (id != null) {
+            String sql = """
+                    SELECT *
+                    FROM Suppliers
+                    WHERE SupplierId = ?
+                    """;
+            String url = "jdbc:mysql://localhost:3306/w3schools";
+            String username = "root";
+            String password = "1234";
+            Connection connection = DriverManager.getConnection(url, username, password);
+            PreparedStatement statement = connection.prepareStatement(sql);
+
+            statement.setInt(1, id);
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                SupplierDto supplierDto = new SupplierDto();
+                supplierDto.setId(resultSet.getInt("SupplierId"));
+                supplierDto.setName(resultSet.getString("SupplierName"));
+                supplierDto.setContact(resultSet.getString("ContactName"));
+                supplierDto.setAddress(resultSet.getString("Address"));
+                supplierDto.setCity(resultSet.getString("City"));
+                supplierDto.setPostalCode(resultSet.getString("PostalCode"));
+                supplierDto.setCountry(resultSet.getString("Country"));
+                supplierDto.setPhone(resultSet.getString("Phone"));
+
+                model.addAttribute("supplier", supplierDto);
+            }
+        }
+
+        return "main16/sub6";
+    }
+
+    @PostMapping("sub6")
+    public String update2(SupplierDto supplier, Integer id, RedirectAttributes rttr) throws Exception {
+        String sql = """
+                UPDATE Suppliers
+                SET SupplierName = ?,
+                    ContactName = ?,
+                    Address = ?,
+                    City = ?,
+                    PostalCode = ?,
+                    Country = ?,
+                    PHONE = ?
+                WHERE SupplierId = ?
+                """;
+        String url = "jdbc:mysql://localhost:3306/w3schools";
+        String username = "root";
+        String password = "1234";
+        Connection connection = DriverManager.getConnection(url, username, password);
+        PreparedStatement statement = connection.prepareStatement(sql);
+
+        statement.setString(1, supplier.getName());
+        statement.setString(2, supplier.getContact());
+        statement.setString(3, supplier.getAddress());
+        statement.setString(4, supplier.getCity());
+        statement.setString(5, supplier.getPostalCode());
+        statement.setString(6, supplier.getCountry());
+        statement.setString(7, supplier.getPhone());
+        statement.setInt(8, supplier.getId());
+        statement.executeUpdate();
+
+        rttr.addAttribute("id", id);
+
+        return "redirect:/main16/sub6";
+    }
 }

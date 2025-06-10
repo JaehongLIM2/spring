@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h3>공급자 정보 조회 및 수정</h3>
+<!-- 조회 -->
+<form th:action="@{/main16/sub6}">
+    <label>
+        <input type="text" name="id" th:value="${param.id}">
+    </label>
+    <button>조회</button>
+</form>
+<div th:if="${supplier == null}">
+    조회 결과 없음
+</div>
+
+<div th:object="${supplier}" th:if="${supplier != null}">
+    <form th:action="@{/main16/sub6}" method="post">
+        <div>
+            <label>
+                ID
+                <input type="text" th:value="*{id}" name="id" readonly>
+            </label>
+        </div>
+        <div>
+            <label>
+                NAME
+                <input type="text" th:value="*{name}" name="name">
+            </label>
+        </div>
+        <div>
+            <label>
+                ContactName
+                <input type="text" th:value="*{contact}" name="contact">
+            </label>
+        </div>
+        <div>
+            <label>
+                Address
+                <input type="text" th:value="*{address}" name="address">
+            </label>
+        </div>
+        <div>
+            <label>
+                City
+                <input type="text" th:value="*{city}" name="city">
+            </label>
+        </div>
+        <div>
+            <label>
+                PostalCode
+                <input type="text" th:value="*{postalCode}" name="postalCode">
+            </label>
+        </div>
+        <div>
+            <label>
+                Country
+                <input type="text" th:value="*{country}" name="country">
+            </label>
+        </div>
+        <div>
+            <label>
+                Phone
+                <input type="text" th:value="*{phone}" name="phone">
+            </label>
+        </div>
+        <button>수정</button>
+    </form>
+</div>
+
+</body>
+</html>
