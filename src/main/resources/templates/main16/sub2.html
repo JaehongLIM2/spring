@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h3>새 공급자 등록</h3>
+<form th:action="@{/main16/sub2}" method="post">
+    <div>
+        공급자 이름
+        <label>
+            <input type="text" name="name">
+        </label>
+    </div>
+    <div>
+        계약자 이름
+        <label>
+            <input type="text" name="contact">
+        </label>
+    </div>
+    <div>
+        주소
+        <label>
+            <input type="text" name="address">
+        </label>
+    </div>
+    <div>
+        도시
+        <label>
+            <input type="text" name="city">
+        </label>
+    </div>
+    <div>
+        우편번호
+        <label>
+            <input type="text" name="postalCode">
+        </label>
+    </div>
+    <div>
+        국가
+        <label>
+            <input type="text" name="country">
+        </label>
+    </div>
+    <div>
+        전화번호
+        <label>
+            <input type="text" name="phone">
+        </label>
+    </div>
+    <div>
+        <button>
+            등록
+        </button>
+    </div>
+</form>
+
+<hr>
+<hr>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>공급자 이름</th>
+        <th>계약자 이름</th>
+        <th>주소</th>
+        <th>도시</th>
+        <th>우편번호</th>
+        <th>국가</th>
+        <th>전화번호</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="sup : ${supplierList}">
+        <td th:text="${sup.id}"></td>
+        <td th:text="${sup.name}"></td>
+        <td th:text="${sup.contact}"></td>
+        <td th:text="${sup.address}"></td>
+        <td th:text="${sup.city}"></td>
+        <td th:text="${sup.postalCode}"></td>
+        <td th:text="${sup.country}"></td>
+        <td th:text="${sup.phone}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

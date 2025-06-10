@@ -96,7 +96,13 @@ FROM Categories;
 SELECT COUNT(IFNULL(Description, '미정'))
 FROM Categories;
 
+# INSERT INTO Customers
+# (CustomerName, ContactName, Address, City, PostalCode, Country)
+# VALUE
 
+# INSERT INTO Suppliers
+# (SupplierName, ContactName, Address, City, PostalCode, Country, Phone)
+# VALUE
 
 
 
