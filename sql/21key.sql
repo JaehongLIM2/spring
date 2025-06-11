@@ -37,19 +37,43 @@ DESC table32;
 
 CREATE TABLE table33
 (
-    number  VARCHAR(13) PRIMARY KEY,
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    number  VARCHAR(13) NOT NULL UNIQUE ,
     name    VARCHAR(20),
     address VARCHAR(30)
 );
+DROP TABLE table33;
 
+DESC table33;
 
+# INSERT INTO table33
+#     (id, number, name, address)
+# VALUES (1, '3-3', 'son', 'seoul');
+#
+# INSERT INTO table33
+# (id, number, name, address)
+# VALUES (2, '4-4', 'lee', 'seoul');
+#
+# INSERT INTO table33
+# (id, number, name, address)
+# VALUES (3, '4-4', 'lee', 'seoul');
 
+INSERT INTO table33
+    (number, name, address)
+VALUES ('3-3', 'son', 'seoul');
 
+INSERT INTO table33
+(number, name, address)
+VALUES ('4-4', 'lee', 'seoul');
 
+INSERT INTO table33
+(number, name, address)
+VALUES ('4-2', 'lee', 'seoul');
 
+SELECT *
+FROM table33;
 
-
-
+# -> 대부분의 테이블에 의미없는 id 컬럼(INT PRIMARY KEY AUTO_INCREMENT) 으로 추가됨
 
 
 
