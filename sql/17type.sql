@@ -154,4 +154,90 @@ VALUES (11123.2, 21314.23);
 
 SELECT *
 FROM table9;
+
 # DATE, TIME
+# DATE : 날짜
+# TIME : 시간
+# DATETIME : 날짜 시간
+CREATE TABLE table10
+(
+    col1 DATE,
+    col2 TIME,
+    col3 DATETIME
+);
+
+INSERT INTO table10
+    (col1, col2, col3)
+VALUES ('2025-06-11', '10:23:20', '2023-11-05 12:23:44');
+
+INSERT INTO table10
+(col1, col2, col3)
+VALUES ('1000-01-01', '10:23:20', '9999-12-31 23:59:59');
+
+SELECT *
+FROM table10;
+
+# 연습
+# birth_date(날짜), work_time(시간), born(날짜 시간) table11 만들기
+# 두 개의 레코드 입력
+CREATE TABLE table11
+(
+    birth_date DATE,
+    work_time  TIME,
+    born       DATETIME
+);
+
+INSERT INTO table11
+    (birth_date, work_time, born)
+VALUES ('1995-08-17', '08:00:00', '1995-08-17 03:19:23');
+
+INSERT INTO table11
+(birth_date, work_time, born)
+VALUES ('1999-01-13', '09:29:23', '1999-01-13 12:45:29');
+
+SELECT *
+FROM table11;
+
+# STRING : VARCHAR(길이)
+# NUMBER : INT, BIGINT, DEC(총 길이, 소숫점 이하 길이)
+# 날짜 시간 : DATE, TIME, DATETIME
+
+CREATE TABLE table12
+(
+    col1 VARCHAR(10),
+    col2 INT,
+    col3 BIGINT,
+    col4 DEC(10, 2),
+    col5 DATE,
+    col6 TIME,
+    col7 DATETIME
+);
+
+INSERT INTO table12
+(col1, col2, col3, col4, col5, col6, col7)
+VALUES ();
+
+SELECT *
+FROM table12;
+
+CREATE TABLE table13
+(
+    name VARCHAR(10),
+    birth_date DATE,
+    score DEC(10, 2),
+    born_at DATETIME
+);
+
+INSERT INTO table13
+(name, birth_date, score, born_at)
+VALUES ();
+
+
+
+
+
+
+
+
+
+
