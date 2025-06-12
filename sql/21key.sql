@@ -11,7 +11,7 @@ CREATE TABLE table30
     name    VARCHAR(20),
     address VARCHAR(20),
 #     phone   VARCHAR(20) UNIQUE NOT NULL,
-    phone VARCHAR(20) PRIMARY KEY
+    phone   VARCHAR(20) PRIMARY KEY
 );
 DROP TABLE table30;
 
@@ -37,8 +37,8 @@ DESC table32;
 
 CREATE TABLE table33
 (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    number  VARCHAR(13) NOT NULL UNIQUE ,
+    id      INT PRIMARY KEY AUTO_INCREMENT,
+    number  VARCHAR(13) NOT NULL UNIQUE,
     name    VARCHAR(20),
     address VARCHAR(30)
 );
@@ -63,11 +63,11 @@ INSERT INTO table33
 VALUES ('3-3', 'son', 'seoul');
 
 INSERT INTO table33
-(number, name, address)
+    (number, name, address)
 VALUES ('4-4', 'lee', 'seoul');
 
 INSERT INTO table33
-(number, name, address)
+    (number, name, address)
 VALUES ('4-2', 'lee', 'seoul');
 
 SELECT *
