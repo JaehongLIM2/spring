@@ -114,17 +114,47 @@ WHERE EmployeeID IN (2, 3);
 # 주문을 처리한 적 없는 직원들 조회
 SELECT e.EmployeeID, e.LastName, e.FirstName
 FROM Orders o
-         RIGHT JOIN  Employees e
-              ON o.EmployeeID = e.EmployeeID
+         RIGHT JOIN Employees e
+                    ON o.EmployeeID = e.EmployeeID
 WHERE OrderID IS NULL;
 
-# UNION
+USE mydatabase;
+# UNION (합집합)
+SELECT col1
+FROM table39;
+
+SELECT col_a
+FROM table40;
 
 
+SELECT col1
+FROM table39
+UNION
+SELECT col_a
+FROM table40;
 
+SELECT *
+FROM table39
+         LEFT JOIN table40
+                   ON table39.col1 = col_a
+UNION
+SELECT *
+FROM table39
+         RIGHT JOIN table40
+                    ON table39.col1 = col_a;
 
+# 연습
+USE w3schools;
+DELETE
+FROM OrderDetails
+WHERE ProductID IN (10, 20, 30, 40);
 
-
+# 한 번도 주문된 적 없는 상품들 이름 조회
+SELECT *
+FROM OrderDetails od
+         RIGHT JOIN Products p
+              ON p.ProductID = od.ProductID
+WHERE od.OrderDetailID IS NULL;
 
 
 
