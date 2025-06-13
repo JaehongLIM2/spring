@@ -6,7 +6,14 @@ import org.springframework.stereotype.Component;
 @Component
 public class Bean2 {
     public final Bean1 bean1;
+    Bean3 bean3;
 
+    @Autowired
+    public void setBean3(Bean3 bean3) {
+        this.bean3 = bean3;
+    }
+
+    @Autowired
     public Bean2(Bean1 bean1) {
         this.bean1 = bean1;
     }
@@ -18,5 +25,6 @@ public class Bean2 {
 
     public void action() {
         bean1.go();
+        bean3.abc();
     }
 }
