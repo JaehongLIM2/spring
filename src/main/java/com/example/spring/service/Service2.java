@@ -1,11 +1,7 @@
 package com.example.spring.service;
 
-import com.example.spring.entity.Entity1;
-import com.example.spring.entity.Entity2;
-import com.example.spring.entity.Entity3;
-import com.example.spring.repository.Entity1Repository;
-import com.example.spring.repository.Entity2Repository;
-import com.example.spring.repository.Entity3Repository;
+import com.example.spring.entity.*;
+import com.example.spring.repository.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +12,9 @@ public class Service2 {
     private final Entity1Repository entity1Repository;
     private final Entity2Repository entity2Repository;
     private final Entity3Repository entity3Repository;
+    private final Entity4Repository entity4Repository;
+    private final Entity5Repository entity5Repository;
+
 
     public String sayHello() {
         System.out.println("Hello World");
@@ -53,5 +52,18 @@ public class Service2 {
     public void process4() {
         Entity3 entity3 = entity3Repository.findById(1).get();
         System.out.println(entity3);
+    }
+
+    public void process5() {
+
+        Entity4 entity4 = entity4Repository.findById(1).get();
+        System.out.println(entity4);
+    }
+
+    public void process6() {
+
+        Entity5 entity5 = entity5Repository.findById(1).get();
+        System.out.println(entity5);
+
     }
 }
