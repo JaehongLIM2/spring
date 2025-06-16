@@ -1,12 +1,15 @@
 package com.example.spring.controller;
 
 
+import com.example.spring.entity.Entity14;
 import com.example.spring.service.Service2;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.time.LocalDateTime;
 
 @Controller
 @RequestMapping("main20")
@@ -109,4 +112,65 @@ public class Controller20 {
 
         return "main20/sub13";
     }
+
+    @GetMapping("sub14")
+    public String sub14(Integer id, Model model) {
+        Entity14 data = service2.process11(id);
+
+        model.addAttribute("data", data);
+        System.out.println(data);
+        return "main20/sub14";
+    }
+
+    // /main20/sub15?name=choi&score=88.8&city=dokdo
+    @GetMapping("sub15")
+    public String sub15(String name, Double score, String city) {
+        service2.process12(name, score, city);
+
+        return "main20/sub15";
+    }
+
+    @GetMapping("sub16")
+    public String sub16(String address, Integer score, LocalDateTime inserted) {
+        service2.process13(address, score, inserted);
+
+        return "/main20/sub16";
+    }
+
+    // /main20/sub17?id=2&score=12.34
+    @GetMapping("sub17")
+    public String sub17(Integer id, Double score) {
+        service2.process14(id, score);
+
+        return "main20/sub17";
+    }
+
+    // 연습
+    // /main20/sub18?id=1&address=강남
+    @GetMapping("sub18")
+    public String sub18(Integer id, String address) {
+        service2.process15(id, address);
+
+        return "main20/sub18";
+
+    }
+
+    @GetMapping("sub19")
+    public String sub19(Integer id) {
+        service2.process16(id);
+
+        return "main20/sub19";
+    }
+
+    // 연습
+    // /main20/sub20?id=1
+    // 15번 테이블 1번 레코드 삭제 코드 작성
+
+    @GetMapping("sub20")
+    public String sub20(Integer id) {
+        service2.process17(id);
+
+        return "main20/sub20";
+    }
+
 }

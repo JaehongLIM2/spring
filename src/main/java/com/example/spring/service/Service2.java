@@ -5,6 +5,7 @@ import com.example.spring.repository.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.Optional;
 
 @Service
@@ -20,6 +21,8 @@ public class Service2 {
     private final Entity11Repository entity11Repository;
     private final Entity12Repository entity12Repository;
     private final Entity13Repository entity13Repository;
+    private final Entity14Repository entity14Repository;
+    private final Entity15Repository entity15Repository;
 
 
     public String sayHello() {
@@ -105,6 +108,63 @@ public class Service2 {
 
         System.out.println(data13.isPresent());
         System.out.println(data13.isEmpty());
+    }
 
+    public Entity14 process11(Integer id) {
+        // SELECT
+        // findById(key) : key 에 해당하는 record를 저장한 Entity 객체를 리턴(Optional)
+
+        Optional<Entity14> data = entity14Repository.findById(id);
+        if (data.isPresent()) {
+            return data.get();
+        }
+        return null;
+    }
+
+    public void process12(String name, Double score, String city) {
+        // INSERT :
+        // save() : 해당 entity 를 새 record 로 입력
+        //        : 해당 entity 에 매핑되는 record 를 업데이트
+
+        Entity14 data = new Entity14();
+        data.setName(name);
+        data.setScore(score);
+        data.setCity(city);
+
+        entity14Repository.save(data);
+    }
+
+    public void process13(String address, Integer price, LocalDateTime inserted) {
+        Entity15 data = new Entity15();
+        data.setAddress(address);
+        data.setPrice(price);
+        data.setInsertedAt(inserted);
+        entity15Repository.save(data);
+    }
+
+    public void process14(Integer id, Double score) {
+        // 1 . 조회하고
+        Entity14 data = entity14Repository.findById(id).get();
+
+        // 2 . 값 변경
+        data.setScore(score);
+
+        // 3 . sava
+        entity14Repository.save(data);
+    }
+
+    public void process15(Integer id, String address) {
+        Entity15 data = entity15Repository.findById(id).get();
+
+        data.setAddress(address);
+        entity15Repository.save(data);
+    }
+    public void process16(Integer id) {
+        entity14Repository.deleteById(id);
+
+    }
+
+    public void process17(Integer id) {
+        entity15Repository.deleteById(id);
     }
 }
