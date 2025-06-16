@@ -5,6 +5,8 @@ import com.example.spring.repository.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 @RequiredArgsConstructor
 public class Service2 {
@@ -14,6 +16,10 @@ public class Service2 {
     private final Entity3Repository entity3Repository;
     private final Entity4Repository entity4Repository;
     private final Entity5Repository entity5Repository;
+    private final Entity10Repository entity10Repository;
+    private final Entity11Repository entity11Repository;
+    private final Entity12Repository entity12Repository;
+    private final Entity13Repository entity13Repository;
 
 
     public String sayHello() {
@@ -64,6 +70,41 @@ public class Service2 {
 
         Entity5 entity5 = entity5Repository.findById(1).get();
         System.out.println(entity5);
+
+    }
+
+    public void process7() {
+        // findById : 키(id)로 하나의 record(row)를 조회
+
+        Optional<Entity10> data = entity10Repository.findById(1);
+        System.out.println(data.isPresent());
+        System.out.println(data.isEmpty());
+
+    }
+
+    // 연습
+    // Entity11Repository.findById()를 사용해서 하나의 record 를 조회하는
+    // class 작성
+
+    public void process8() {
+        Optional<Entity11> data11 = entity11Repository.findById(1);
+        System.out.println(data11.isPresent());
+        System.out.println(data11.isEmpty());
+    }
+
+    public void process9() {
+        Optional<Entity12> data12 = entity12Repository.findById(1);
+        System.out.println(data12.isPresent());
+        System.out.println(data12.isEmpty());
+
+    }
+
+    public void process10() {
+
+        Optional<Entity13> data13 = entity13Repository.findById(1);
+
+        System.out.println(data13.isPresent());
+        System.out.println(data13.isEmpty());
 
     }
 }

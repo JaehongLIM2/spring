@@ -121,6 +121,54 @@ CREATE TABLE my_table7
 );
 
 
+CREATE TABLE my_table8
+(
+    id          INT AUTO_INCREMENT PRIMARY KEY,
+    address     VARCHAR(255),
+    salary      DEC(10, 2),
+    inserted_at datetime,
+    hire_date   datetime
+);
+
+CREATE TABLE my_table9
+(
+    id      INT AUTO_INCREMENT PRIMARY KEY,
+    name    VARCHAR(255),
+    age     INT,
+    height  INT,
+    weight  INT,
+    address VARCHAR(255),
+    phone   VARCHAR(255),
+    email   VARCHAR(255),
+    city    VARCHAR(255)
+);
+
+CREATE TABLE my_table10
+(
+    id         INT PRIMARY KEY AUTO_INCREMENT,
+    name       VARCHAR(30),
+    city       VARCHAR(30),
+    birth_date DATE
+);
+
+SELECT *
+FROM my_table10
+WHERE id = 1;
+
+INSERT INTO my_table10
+    (name, city, birth_date)
+VALUES ('son', 'seoul', '1998-10-02');
+
+
+CREATE TABLE my_table11
+(
+    id          INT PRIMARY KEY AUTO_INCREMENT,
+    address     VARCHAR(30),
+    score       DEC(10, 2),
+    inserted_at DATETIME
+);
+
+
 
 
 
