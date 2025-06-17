@@ -7,6 +7,7 @@ import com.example.spring.repository.Entity17Repository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -37,4 +38,44 @@ public class Service3 {
         System.out.println(list.size());
     }
 
+    public void action4(String country) {
+        /*
+        SELECT *
+        FROM customer
+        WHERE country = 'usa';
+         */
+
+        List<Entity16> data = entity16Repository.query1(country);
+        System.out.println(data.size());
+        for (Entity16 entity16 : data) {
+            System.out.println(entity16);
+        }
+    }
+
+    public void action5(String city) {
+        List<Entity16> data = entity16Repository.query2(city);
+        System.out.println(data.size());
+        for (Entity16 entity16 : data) {
+            System.out.println(entity16);
+        }
+    }
+
+    public void action6(String city1, String city2) {
+        List<Entity16> data = entity16Repository.query3(city1, city2);
+        System.out.println(data.size());
+        for (Entity16 entity16 : data) {
+            System.out.println(entity16);
+        }
+    }
+
+    public void action7(LocalDate start, LocalDate end) {
+        List<Entity17> data = entity17Repository.query1(start, end);
+        System.out.println(data.size());
+        for (Entity17 entity17 : data) {
+            System.out.println(entity17);
+        }
+
+    }
+
 }
+
