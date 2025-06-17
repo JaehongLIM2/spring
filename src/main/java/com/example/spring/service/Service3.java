@@ -225,7 +225,41 @@ public class Service3 {
         for (Entity19 entity19 : byProductNameLike) {
             System.out.println(entity19);
         }
-
     }
+
+    public void action19() {
+
+        List<Entity19> entity19s = entity19Repository.query1(6);
+        for (Entity19 entity19 : entity19s) {
+            System.out.println(entity19);
+        }
+        List<Entity19> entity19s2 = entity19Repository.query2(5);
+        for (Entity19 entity19 : entity19s2) {
+            System.out.println(entity19);
+        }
+        List<Entity19> byCategoryIdOrderByPriceAsc = entity19Repository.findByCategoryIdOrderByPriceAsc(3);
+        for (Entity19 entity19 : byCategoryIdOrderByPriceAsc) {
+            System.out.println(entity19);
+        }
+        List<Entity19> byCategoryIdOrderByPriceDesc = entity19Repository.findByCategoryIdOrderByPriceDesc(2);
+        for (Entity19 entity19 : byCategoryIdOrderByPriceDesc) {
+            System.out.println(entity19);
+        }
+    }
+
+    public void action20() {
+        System.out.println("=====================================================");
+        List<Entity18> byCountryInOrderBySupplierNameAsc = entity18Repository.findByCountryInOrderBySupplierNameAsc(List.of("usa", "japan"));
+        for (Entity18 entity18 : byCountryInOrderBySupplierNameAsc) {
+            System.out.println(entity18);
+        }
+        System.out.println("=====================================================");
+        List<Entity18> bySupplierNameLikeOrderBySupplierNameDesc = entity18Repository.findBySupplierNameLikeOrderBySupplierNameDesc("%an%");
+        for (Entity18 entity18 : bySupplierNameLikeOrderBySupplierNameDesc) {
+            System.out.println(entity18);
+        }
+        System.out.println("=====================================================");
+    }
+
 }
 

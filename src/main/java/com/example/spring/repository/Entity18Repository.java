@@ -44,4 +44,14 @@ public interface Entity18Repository extends JpaRepository<Entity18, Integer> {
     SELECT * FROM supplier WHERE country IN(?, ?, ?)
      */
     List<Entity18> findByCountryIn(List<String> country);
+
+
+
+    // 연습
+    // SELECT * FROM supplier WHERE country IN(?, ?, ?) ORDER BY Supplier_name
+    // query method 만들기
+
+    List<Entity18> findByCountryInOrderBySupplierNameAsc(List<String> country);
+
+    List<Entity18> findBySupplierNameLikeOrderBySupplierNameDesc(String supplierName);
 }

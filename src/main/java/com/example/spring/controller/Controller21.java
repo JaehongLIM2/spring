@@ -18,23 +18,18 @@ public class Controller21 {
 
     @GetMapping("sub1")
     public String sub1() {
-
         service3.action();
-
         return "main21/sub1";
     }
 
     @GetMapping("sub2")
     public String sub2() {
-
         service3.action2();
-
         return "main21/sub2";
     }
 
     @GetMapping("sub3")
     public String sub3() {
-
         service3.action3();
         return "main21/sub3";
     }
@@ -44,33 +39,27 @@ public class Controller21 {
     @GetMapping("sub4")
     public String sub4(String country) {
         service3.action4(country);
-
         return "main21/sub4";
     }
 
     // /main21/sub5?city=berlin
     @GetMapping("sub5")
     public String sub5(String city) {
-
         service3.action5(city);
-
         return "main21/sub5";
     }
+
     // /main21/sub6?city1=berlin&city2=london
     @GetMapping("sub6")
     public String sub6(String city1, String city2) {
-
         service3.action6(city1, city2);
-
         return "main21/sub6";
     }
 
     // /main21/sub7?start=1950-01-01&end=1959-12-31
     @GetMapping("sub7")
     public String sub7(LocalDate start, LocalDate end) {
-
         service3.action7(start, end);
-
         return "main21/sub7";
     }
 
@@ -78,66 +67,50 @@ public class Controller21 {
     // 고객 이름에 fred 가 있는 고객들 조회
     @GetMapping("sub8")
     public String sub8(String keyword) {
-
         service3.action8(keyword);
-
         return "main21/sub8";
     }
 
     // /main21/sub9?keyword=an
     @GetMapping("sub9")
     public String sub9(String keyword) {
-
         service3.action9(keyword);
-
         return "main21/sub9";
     }
 
     @GetMapping("sub10")
     public String sub10(String country) {
-
         service3.action10(country);
-
         return "main21/sub10";
     }
 
     @GetMapping("sub11")
     public String sub11(String city) {
-
         service3.action11(city);
-
         return "main21/sub11";
     }
 
     @GetMapping("sub12")
     public String sub12(String keyword) {
-
         service3.action12(keyword);
-
         return "main21/sub12";
     }
 
     @GetMapping("sub13")
     public String sub13(String keyword) {
-
         service3.action13(keyword);
-
         return "main21/sub13";
     }
 
     @GetMapping("sub14")
     public String sub14(String country) {
-
         service3.action14(country);
-
         return "main21/sub14";
     }
 
     @GetMapping("sub15")
     public String sub15(String city) {
-
         service3.action15(city);
-
         return "main21/sub15";
     }
 
@@ -157,5 +130,17 @@ public class Controller21 {
     public String sub18() {
         service3.action18();
         return "main21/sub18";
+    }
+
+    @GetMapping("sub19")
+    public String sub19() {
+        service3.action19();
+        return "main21/sub19";
+    }
+
+    @GetMapping("sub20")
+    public String sub20() {
+        service3.action20();
+        return "main21/sub20";
     }
 }
