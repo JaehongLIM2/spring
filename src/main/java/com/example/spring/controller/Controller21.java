@@ -74,4 +74,88 @@ public class Controller21 {
         return "main21/sub7";
     }
 
+    // /main21/sub8?keyword=fred
+    // 고객 이름에 fred 가 있는 고객들 조회
+    @GetMapping("sub8")
+    public String sub8(String keyword) {
+
+        service3.action8(keyword);
+
+        return "main21/sub8";
+    }
+
+    // /main21/sub9?keyword=an
+    @GetMapping("sub9")
+    public String sub9(String keyword) {
+
+        service3.action9(keyword);
+
+        return "main21/sub9";
+    }
+
+    @GetMapping("sub10")
+    public String sub10(String country) {
+
+        service3.action10(country);
+
+        return "main21/sub10";
+    }
+
+    @GetMapping("sub11")
+    public String sub11(String city) {
+
+        service3.action11(city);
+
+        return "main21/sub11";
+    }
+
+    @GetMapping("sub12")
+    public String sub12(String keyword) {
+
+        service3.action12(keyword);
+
+        return "main21/sub12";
+    }
+
+    @GetMapping("sub13")
+    public String sub13(String keyword) {
+
+        service3.action13(keyword);
+
+        return "main21/sub13";
+    }
+
+    @GetMapping("sub14")
+    public String sub14(String country) {
+
+        service3.action14(country);
+
+        return "main21/sub14";
+    }
+
+    @GetMapping("sub15")
+    public String sub15(String city) {
+
+        service3.action15(city);
+
+        return "main21/sub15";
+    }
+
+    @GetMapping("sub16")
+    public String sub16(LocalDate start, LocalDate end) {
+        service3.action16(start, end);
+        return "main21/sub16";
+    }
+
+    @GetMapping("sub17")
+    public String sub17() {
+        service3.action17();
+        return "main21/sub17";
+    }
+
+    @GetMapping("sub18")
+    public String sub18() {
+        service3.action18();
+        return "main21/sub18";
+    }
 }

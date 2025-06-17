@@ -40,8 +40,45 @@ FROM employee;
 SELECT *
 FROM w3schools.Employees;
 
+CREATE TABLE supplier
+(
+    id            INT AUTO_INCREMENT PRIMARY KEY,
+    supplier_name VARCHAR(255),
+    contact_name  VARCHAR(255),
+    address       VARCHAR(255),
+    city          VARCHAR(255),
+    postal_code   VARCHAR(255),
+    country       VARCHAR(255),
+    phone         VARCHAR(255)
+);
 
+DROP TABLE supplier;
 
+INSERT INTO supplier
+    (supplier_name, contact_name, address, city, postal_code, country, phone)
+SELECT SupplierName, ContactName, Address, City, PostalCode, Country, Phone
+FROM w3schools.Suppliers;
+
+SELECT *
+FROM supplier;
+
+CREATE TABLE product
+(
+    id           INT PRIMARY KEY AUTO_INCREMENT,
+    product_name VARCHAR(255),
+    supplier_id  INT,
+    category_id  INT,
+    unit         VARCHAR(255),
+    price        DEC(10, 2)
+);
+
+INSERT INTO product
+    (product_name, supplier_id, category_id, unit, price)
+SELECT ProductName, SupplierID, CategoryID, Unit, Price
+FROM w3schools.Products;
+
+SELECT *
+FROM product;
 
 
 
