@@ -160,4 +160,14 @@ public class Service7 {
         Entity30 entity30 = entity30Repository.findById(id).get();
         System.out.println("entity30 = " + entity30);
     }
+
+    public void action9(Integer id) {
+        Entity30 entity30 = entity30Repository.findById(id).get();
+        System.out.println("entity30.getOrderDate() = " + entity30.getOrderDate());
+        System.out.println("entity30.getInfo() = " + entity30.getInfo());
+
+        // 직원정보
+        System.out.println("entity30.getEmployeeId().getFirstName() = " + entity30.getEmployeeId().getFirstName());
+        
+    }
 }

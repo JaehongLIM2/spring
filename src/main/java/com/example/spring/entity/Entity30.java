@@ -19,8 +19,8 @@ public class Entity30 {
     private Integer id;
     private LocalDate orderDate;
     private String info;
-    
-    @ManyToOne
+
+    @ManyToOne //(fetch = FetchType.LAZY)
     @JoinColumn(name = "employee_id")
     private Entity29 employeeId;
 }
