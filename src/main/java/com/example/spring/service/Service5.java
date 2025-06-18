@@ -5,6 +5,7 @@ import com.example.spring.entity.Entity20;
 import com.example.spring.repository.Entity16Repository;
 import com.example.spring.repository.Entity18Repository;
 import com.example.spring.repository.Entity20Repository;
+//import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -115,6 +116,41 @@ public class Service5 {
     @Transactional
     public void action11(String country) {
         entity18Repository.deleteCountry(country);
+    }
+
+    @Transactional
+    public void action12(String country) {
+        // UPDATE, DELETE, INSERT
+
+        // rollback 됨
+        // throw new RunTimeException();
+
+        // UPDATE, DELETE, INSERT
+    }
+
+    @Transactional
+    public void action13(String country) {
+        // UPDATE, DELETE, INSERT
+
+        // rollback 안됨
+        // throw new Exception();
+
+        // UPDATE, DELETE, INSERT
+    }
+
+    @Transactional
+    public void action14(String country) {
+        // UPDATE, DELETE, INSERT
+
+        // rollback 안됨
+        // throw new Exception();
+        try{
+            throw new Exception();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+        // UPDATE, DELETE, INSERT
     }
 }
 
