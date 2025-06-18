@@ -3,6 +3,7 @@ package com.example.spring.service;
 import com.example.spring.entity.Entity16;
 import com.example.spring.entity.Entity20;
 import com.example.spring.repository.Entity16Repository;
+import com.example.spring.repository.Entity18Repository;
 import com.example.spring.repository.Entity20Repository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -18,6 +19,7 @@ import java.util.List;
 public class Service5 {
     private final Entity16Repository entity16Repository;
     private final Entity20Repository entity20Repository;
+    private final Entity18Repository entity18Repository;
 
     public void action1(Integer page) {
         Page<Entity16> page1 = entity16Repository
@@ -58,10 +60,11 @@ public class Service5 {
 
     }
 
-    public void action15(Integer id) {
+    public void action5(Integer id) {
         entity16Repository.deleteById(id);
     }
 
+    @Transactional
     public void action6(String country) {
         entity16Repository.deleteByCountry(country);
     }
@@ -94,4 +97,35 @@ public class Service5 {
 
         entity20Repository.save(b);
     }
+
+    @Transactional
+    public void action9(String country) {
+        entity18Repository.deleteByCountry(country);
+    }
+
+    @Transactional
+    public void action10(String country) {
+        // SELECT 후 하나씩 지움 : 성능 이슈가 있음(양이 많으면 느려질 수 있음)
+//        entity16Repository.deleteByCountry(country);
+
+        // -> JPQL이나 SQL로 직접 작성해서 지워야함
+        entity16Repository.bulkDeleteByCountry(country);
+    }
+
+    @Transactional
+    public void action11(String country) {
+        entity18Repository.deleteCountry(country);
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+

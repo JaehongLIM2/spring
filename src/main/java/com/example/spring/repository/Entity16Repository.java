@@ -6,6 +6,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
 import java.time.LocalDate;
@@ -112,6 +113,13 @@ public interface Entity16Repository extends JpaRepository<Entity16, Integer> {
 
 
     void deleteByCountry(String country);
+
+    @Modifying
+    @Query(value = """
+            DELETE FROM Entity16 e 
+            WHERE e.country =:country
+            """)
+    void bulkDeleteByCountry(String country);
 }
 
 

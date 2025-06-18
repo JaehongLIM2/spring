@@ -44,10 +44,11 @@ public class Controller23 {
 
     @GetMapping("sub5")
     public String sub5(Integer id) {
-        service5.action15(id);
+        service5.action5(id);
         return "main23/sub5";
     }
 
+    // /main23/sub6?country=mexico
     @GetMapping("sub6")
     public String sub6(String country) {
         service5.action6(country);
@@ -60,9 +61,31 @@ public class Controller23 {
         return "main23/sub7";
     }
 
-    @GetMapping("su87")
+    @GetMapping("sub8")
     public String sub8() {
         service5.action8();
         return "main23/sub8";
     }
+
+    // /main23/sub9?country=germany
+    @GetMapping("sub9")
+    public String sub9(String country) {
+        service5.action9(country);
+        return "main23/sub9";
+    }
+
+    // /main23/sub10?country=usa
+    @GetMapping("sub10")
+    public String sub10(String country) {
+        // 국가가 usa 인 모든 고객 지우기
+        service5.action10(country);
+        return "main23/sub10";
+    }
+
+    @GetMapping("sub11")
+    public String sub11(String country) {
+        service5.action11(country);
+        return "main23/sub11";
+    }
+
 }
