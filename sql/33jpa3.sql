@@ -121,7 +121,23 @@ CREATE TABLE my_table28
     FOREIGN KEY (category_id) REFERENCES my_table27 (id)
 );
 
+CREATE TABLE my_table29
+(
+    id         INT PRIMARY KEY AUTO_INCREMENT,
+    first_name VARCHAR(30),
+    last_name  VARCHAR(30),
+    birth_date DATE
+);
 
+
+CREATE TABLE my_table30
+(
+    id          INT PRIMARY KEY AUTO_INCREMENT,
+    order_date  DATE,
+    info        VARCHAR(20),
+    employee_id INT,
+    FOREIGN KEY (employee_id) REFERENCES my_table29 (id)
+);
 
 
 
