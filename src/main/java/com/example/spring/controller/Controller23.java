@@ -53,4 +53,16 @@ public class Controller23 {
         service5.action6(country);
         return "main23/sub6";
     }
+
+    @GetMapping("sub7")
+    public String sub7() {
+        service5.action7();
+        return "main23/sub7";
+    }
+
+    @GetMapping("su87")
+    public String sub8() {
+        service5.action8();
+        return "main23/sub8";
+    }
 }
