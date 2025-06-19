@@ -1,6 +1,8 @@
 package com.example.spring.controller;
 
 import com.example.spring.dto.Entity36Dto;
+import com.example.spring.dto.Entity39Dto;
+import com.example.spring.dto.ProductInfo;
 import com.example.spring.entity.Entity34;
 import com.example.spring.entity.Entity36;
 import com.example.spring.service.Service8;
@@ -8,6 +10,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("main26")
@@ -83,5 +87,28 @@ public class Controller26 {
 
 
         return "main26/sub9";
+    }
+
+    @RequestMapping("sub10")
+    public String sub10() {
+        List<Entity39Dto> result = service8.action10();
+
+        return "main26/sub10";
+    }
+
+    @RequestMapping("sub11")
+    public String sub11() {
+        List<ProductInfo> result = service8.action11();
+
+        for (ProductInfo productInfo : result) {
+            System.out.println(productInfo.getId());
+            System.out.println(productInfo.getProductName());
+            System.out.println(productInfo.getPrice());
+            System.out.println(productInfo.getCategoryName());
+            System.out.println();
+
+        }
+
+        return "main26/sub11";
     }
 }

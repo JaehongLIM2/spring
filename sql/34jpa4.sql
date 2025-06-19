@@ -105,7 +105,7 @@ CREATE TABLE my_table40
 
 SELECT p.id, p.name product_name, p.price, c.name category_name
 FROM my_table39 p
-         JOIN my_table40 c on p.category_id = c.id;
+         JOIN my_table40 c ON p.category_id = c.id;
 
 SELECT *
 FROM my_table39;
@@ -113,7 +113,17 @@ FROM my_table39;
 SELECT *
 FROM my_table40;
 
+INSERT INTO my_table40
+    (name, description)
+SELECT CategoryName, SUBSTR(Description, 1, 10)
+FROM w3schools.Categories
+LIMIT 8;
 
+INSERT INTO my_table39
+    (name, unit, price, category_id)
+SELECT ProductName, Unit, ROUND(Price, 0), CategoryID
+FROM w3schools.Products
+LIMIT 5;
 
 
 

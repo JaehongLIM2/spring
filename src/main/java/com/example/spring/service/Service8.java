@@ -1,17 +1,23 @@
 package com.example.spring.service;
 
 import com.example.spring.dto.Entity36Dto;
+import com.example.spring.dto.Entity39Dto;
+import com.example.spring.dto.ProductInfo;
 import com.example.spring.entity.Entity34;
 import com.example.spring.entity.Entity35;
 import com.example.spring.entity.Entity36;
+import com.example.spring.entity.Entity39;
 import com.example.spring.repository.Entity34Repository;
 import com.example.spring.repository.Entity35Repository;
 import com.example.spring.repository.Entity36Repository;
+import com.example.spring.repository.Entity39Repository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -22,6 +28,7 @@ public class Service8 {
     private final Entity35Repository entity35Repository;
     private final Entity34Repository entity34Repository;
     private final Entity36Repository entity36Repository;
+    private final Entity39Repository entity39Repository;
 
     public void action1() {
         // 학생 정보 입력
@@ -166,5 +173,34 @@ public class Service8 {
         // Entity 를 리턴하면 안됨
         // -> DTO 로 값 옮겨 담기 리턴하기
         return d1;
+    }
+
+    public List<Entity39Dto> action10() {
+        // t39(product), t40(category)
+        // 상품 번호, 상품명, 가격, 카테고리명
+        List<Entity39> list = entity39Repository.findAll();
+        List<Entity39Dto> result = new ArrayList<>();
+        for (Entity39 entity39 : list) {
+            Entity39Dto d = new Entity39Dto();
+            d.setId(entity39.getId());
+            d.setName(entity39.getName());
+            d.setPrice(entity39.getPrice());
+            d.setCategoryName(entity39.getCategory().getName());
+            result.add(d);
+        }
+
+        return result;
+    }
+
+    public List<ProductInfo> action11() {
+        // t39(product), t40(category)
+        // 상품 번호, 상품명, 가격, 카테고리명
+        /*
+        SELECT p.id, p.name product_name, p.price, c.name category_name
+        FROM my_table39 p
+        JOIN my_table40 c on p.category_id = c.id;
+         */
+        List<ProductInfo> result = entity39Repository.query1();
+        return result;
     }
 }
