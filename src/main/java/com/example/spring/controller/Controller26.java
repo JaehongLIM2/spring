@@ -121,9 +121,7 @@ public class Controller26 {
             System.out.println(prouctInfo2.getQuantity());
             System.out.println(prouctInfo2.getCategoryName());
             System.out.println();
-
         }
-
         return "main26/sub12";
     }
 }
