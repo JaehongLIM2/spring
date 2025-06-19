@@ -3,6 +3,7 @@ package com.example.spring.controller;
 import com.example.spring.dto.Entity36Dto;
 import com.example.spring.dto.Entity39Dto;
 import com.example.spring.dto.ProductInfo;
+import com.example.spring.dto.ProuctInfo2;
 import com.example.spring.entity.Entity34;
 import com.example.spring.entity.Entity36;
 import com.example.spring.service.Service8;
@@ -106,9 +107,23 @@ public class Controller26 {
             System.out.println(productInfo.getPrice());
             System.out.println(productInfo.getCategoryName());
             System.out.println();
+        }
+        return "main26/sub11";
+    }
+
+    @RequestMapping("sub12")
+    public String sub12() {
+        List<ProuctInfo2> result = service8.action12();
+        for (ProuctInfo2 prouctInfo2 : result) {
+            System.out.println(prouctInfo2.getOrderDate());
+            System.out.println(prouctInfo2.getProductName());
+            System.out.println(prouctInfo2.getPrice());
+            System.out.println(prouctInfo2.getQuantity());
+            System.out.println(prouctInfo2.getCategoryName());
+            System.out.println();
 
         }
 
-        return "main26/sub11";
+        return "main26/sub12";
     }
 }

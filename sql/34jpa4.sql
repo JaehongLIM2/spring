@@ -125,6 +125,48 @@ SELECT ProductName, Unit, ROUND(Price, 0), CategoryID
 FROM w3schools.Products
 LIMIT 5;
 
+# 연습
+# 주문
+# OrderInfo interface * 1
+# Entity41 * 1
+# Entity41Repository * 1
+# Entity41Repository.query1() * 1
+# service.action() * 1
+# controller.sub() * 1
+
+CREATE TABLE my_table41
+(
+    id         INT PRIMARY KEY AUTO_INCREMENT,
+    order_date DATE,
+    product_id INT,
+    quantity   INT,
+    FOREIGN KEY (product_id) REFERENCES my_table39 (id)
+);
+
+SELECT *
+FROM my_table41;
+
+INSERT INTO my_table41
+    (order_date, product_id, quantity)
+VALUES ('1998-01-01', 2, 12),
+       ('1999-01-01', 2, 3),
+       ('2001-01-01', 1, 41),
+       ('2002-01-01', 5, 173),
+       ('2003-01-01', 3, 66),
+       ('2004-01-01', 4, 3);
+
+SELECT t.order_date, p.name product_name, p.price, t.quantity, m.name category_name
+FROM my_table39 p
+         JOIN my_table40 m on m.id = p.category_id
+         JOIN my_table41 t on p.id = t.product_id;
+
+
+
+
+
+
+
+
 
 
 
