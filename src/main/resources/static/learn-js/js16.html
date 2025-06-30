@@ -6,44 +6,45 @@
 </head>
 <body>
 <script>
-  // 분해 할당과 함수 파라미터
-  function action1(param) {
-    const name = param.name;
-    const address = param.address;
+    // 분해 할당과 함수 파라미터
+    function action1(param) {
+        const name = param.name;
+        const address = param.address;
 
-    console.log(name);
-    console.log(address);
-  }
+        console.log(name);
+        console.log(address);
+    }
 
-  action1({name: "son", address: "seoul"});
-  action1({name: "kim", address: "kullan"});
+    action1({name: "son", address: "seoul"});
+    action1({name: "kim", address: "kullan"});
 
-  function action2({name, address}) {
-    console.log(name);
-    console.log(address);
-  }
+    function action2({name, address}) {
+        console.log(name);
+        console.log(address);
+    }
 
-  action2({name: "tai", address: "jeju"});
-  action2({name: "lim", address: "daegu"});
+    action2({name: "tai", address: "jeju"});
+    action2({name: "lim", address: "daegu"});
 
-  function action3({name, address = "jeju"}) {
-    console.log(name);
-    console.log(address);
-  }
+    function action3({name, address = "jeju"}) {
+        console.log(name);
+        console.log(address);
+    }
 
-  action3({name: "tai", address: "seoul"});
-  action3({name: "lim"});
+    action3({name: "tai", address: "seoul"});
+    action3({name: "lim"});
 
-  // 연습
-  function action4({score = 0, skill}) {
-    console.log(score);
-    console.log(skill);
-  }
-  action4({score: 33, skill: "java"});
-  action4({skill: "react"});
+    // 연습
+    function action4({score = 0, skill}) {
+        console.log(score);
+        console.log(skill);
+    }
 
-  const a = {score: 99, skill: "spring"};
-  action4(a);
+    action4({score: 33, skill: "java"});
+    action4({skill: "react"});
+
+    const a = {score: 99, skill: "spring"};
+    action4(a);
 
 </script>
 </body>

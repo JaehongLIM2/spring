@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<러html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    const action1 = () => {
+        new Promise((resolve, reject) => {
+            setTimeout(() => {
+                const number = Math.random();
+                if (number < 0.5) {
+                    resolve("결과");
+                } else {
+                    reject("에러");
+                }
+            }, 3000);
+        })
+    };
+
+    action1()
+        .then(res => console.log(res)) // 성공
+        .catch(err => console.log(err)); // 실패
+
+    // await : 비동기(async) 코드를 동기(sync) 코드처럼 사용 가능
+    const a = await action1();
+    console.log(a);
+
+    console.log("어떤 실행 코드");
+
+</script>
+</body>
+</러html>
