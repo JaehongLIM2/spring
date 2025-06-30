@@ -84,7 +84,7 @@ public class Service9 {
     public void action4(MultipartFile[] upload) {
         if (upload != null) {
             for (MultipartFile file : upload) {
-                if (file.getSize() > 0) {
+                if (file != null && !file.isEmpty()) {
                     try(InputStream is = file.getInputStream()) {
                         String filePath = "C:/Temp/uploadFiles/" + file.getOriginalFilename();
                         Path path = Paths.get(filePath);
