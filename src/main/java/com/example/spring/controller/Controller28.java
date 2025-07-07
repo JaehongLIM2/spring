@@ -122,4 +122,23 @@ public class Controller28 {
         System.out.println("Controller28 sub16");
         return "null";
     }
+
+    @GetMapping({"sub17", "sub18", "sub19", "sub20"})
+    public String sub17(String name, Integer age, String city) {
+        System.out.println("name = " + name);
+        System.out.println("age = " + age);
+        System.out.println("city = " + city);
+        System.out.println();
+        return "null";
+    }
+
+    @GetMapping({"sub21", "sub22", "sub23", "sub24"})
+    public String sub21(String fruit, Integer price, String location) {
+        System.out.println("fruit = " + fruit);
+        System.out.println("price = " + price);
+        System.out.println("location = " + location);
+        System.out.println();
+        return "null";
+    }
+
 }
